@@ -1,0 +1,53 @@
+<div *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+</div>
+<div class="search-bar"  *ngIf="!isLoading">
+    <span class="material-icons search-icon">search</span>
+    <form class="search-form" [formGroup]="searchBar" (ngSubmit)="onSubmit()">
+        <div class="search-bar-group">
+            <input type="text" placeholder="Search here" formControlName="q">
+            <button class="button clickable" [disabled]="searchBar.invalid">SEARCH</button>
+        </div>
+        <div class="error-container">
+            <p class="error-text" *ngIf="error">{{error}}</p>
+        </div>
+        <a *ngIf="currentPage === 'results' && isAdvancedSearchHidden" (click)="isAdvancedSearchHidden = !isAdvancedSearchHidden">Advanced search ▼</a>
+        <a *ngIf="currentPage === 'results' && !isAdvancedSearchHidden" (click)="isAdvancedSearchHidden = !isAdvancedSearchHidden">Advanced search ▲</a>
+        <div class="search-bar-group advanced-search" *ngIf="currentPage === 'results' && !isAdvancedSearchHidden">
+            <div class="label-container">
+                <label for="maxResults">Max results:</label>
+                <select name="maxResults" id="maxResults" formControlName="maxResults">
+                    <option value="10">10- default</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40- maximum</option>
+                </select>
+            </div>
+             <div class="label-container">
+                <label for="orderBy">Order by:</label>
+                <select name="orderBy" id="orderBy" formControlName="orderBy">
+                    <option value="relevance">Relevance</option>
+                    <option value="newest">Newest</option>
+                </select>
+            </div>
+            <div class="label-container">
+                <label for="filter">Filter:</label>
+                <select name="filter" id="filter" formControlName="filter">
+                    <option value="partial">Partial</option>
+                    <option value="full">Full</option>
+                    <option value="free-ebooks">Free ebooks</option>
+                    <option value="paid-ebooks">Paid ebooks</option>
+                    <option value="ebooks">Ebooks</option>
+                </select>
+            </div>
+            <div class="label-container">
+                <label for="printType">PrintType:</label>
+                <select name="printType" id="printType" formControlName="printType">
+                    <option value="all">All</option>
+                    <option value="books">Books</option>
+                    <option value="magazines">Magazines</option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>

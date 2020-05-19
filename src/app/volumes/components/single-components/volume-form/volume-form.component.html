@@ -1,0 +1,49 @@
+<section>
+    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+    <div class="form-holder box-shadow" *ngIf="!isLoading">
+        <h2 *ngIf="mode === 'create'">Add a volume</h2>
+        <h2 *ngIf="mode === 'edit'">Edit volume</h2>
+        <form class="form-group" [formGroup]="volumeForm" (submit)="onSubmit()">
+            <div *ngIf="error" class="error-container">
+                <p class="error-text">{{error}}</p>
+            </div>
+            <div class="label-container">
+                <div>
+                    <label for="id">Id: </label>
+                    <p class="error-text" *ngIf="id.touched && id.invalid">required*</p>
+                </div>
+                <input id="id" class="form-input" type="text" formControlName="id">
+            </div>
+            <div class="label-container">
+                <div>
+                    <label for="title">Title:</label>
+                    <p class="error-text" *ngIf="title.touched && title.invalid">required*</p>
+                </div>
+                <input id="title" class="form-input" type="text" formControlName="title">
+            </div>
+            <div class="label-container">
+                <label for="authors">Authors:</label>
+                <input id="authors" class="form-input" type="text" formControlName="authors">
+            </div>
+            <div class="label-container">
+                <label for="publisher">Publisher:</label>
+                <input id="publisher" class="form-input" type="text" formControlName="publisher">
+            </div>
+            <div class="label-container">
+                <label for="date">Publishing date:</label>
+                <input id="date" class="form-input" type="date" formControlName="publishedDate">
+            </div>
+            <div class="label-container">
+                <label for="pageCount">Page count:</label>
+                <input id="pageCount" class="form-input" type="number" formControlName="pageCount">
+            </div>
+            <div class="label-container">
+                <label for="coverImg">Cover image:</label>
+                <input id="coverImg" class="form-input" type="text" formControlName="thumbnail">
+            </div>
+            <button *ngIf="mode === 'create'" class="button clickable" [disabled]="volumeForm.invalid">Create</button>
+            <button *ngIf="mode === 'edit'" class="button clickable" [disabled]="volumeForm.invalid">Edit</button>
+            <a *ngIf="mode === 'create'" (click)="mockData()">Mock data</a>
+        </form>
+    </div>
+</section>

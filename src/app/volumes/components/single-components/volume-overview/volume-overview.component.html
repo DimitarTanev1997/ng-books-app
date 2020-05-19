@@ -1,0 +1,54 @@
+<app-loading-spinner *ngIf="book === null"></app-loading-spinner>
+<section class="box-shadow flex-container" *ngIf="book != null">
+    <div class="img-holder">
+        <img src="{{book?.volumeInfo?.imageLinks?.thumbnail}}" alt="{{book?.volumeInfo?.title}}">
+    </div>
+    <div class="info-container">
+        <h1>{{book?.volumeInfo?.title}}</h1>
+        <div class="desc-group">
+            <h4>Authors:&nbsp;</h4>
+            <p *ngIf="book?.volumeInfo?.authors">{{book?.volumeInfo?.authors?.join(', ')}}</p>
+            <p *ngIf="!book?.volumeInfo?.authors"> N/A</p>
+        </div>
+        <div class="desc-group">
+            <h4>Price:&nbsp;</h4>
+            <p *ngIf="!book?.saleInfo?.listPrice">Currently not for sale.</p>
+            <p *ngIf="book?.saleInfo?.listPrice">{{book?.saleInfo?.listPrice?.amount}} {{book?.saleInfo?.listPrice?.currencyCode}}</p>
+        </div>
+        <div class="desc-group">
+            <h4>Publisher:&nbsp;</h4>
+            <p *ngIf="book?.volumeInfo?.publisher">{{book?.volumeInfo?.publisher}}</p>
+            <p *ngIf="!book?.volumeInfo?.publisher">N/A</p>
+        </div>
+        <div class="desc-group">
+            <h4>Publishing date:&nbsp;</h4>
+            <p *ngIf="book?.volumeInfo?.publishedDate">{{book?.volumeInfo?.publishedDate}}</p>
+            <p *ngIf="!book?.volumeInfo?.publishedDate">N/A</p>
+        </div>
+        <div class="desc-group">
+            <h4>Categories:&nbsp;</h4>
+            <p *ngIf="book?.volumeInfo?.categories">{{book?.volumeInfo?.categories?.join(', ')}}</p>
+            <p *ngIf="!book?.volumeInfo?.categories">N/A</p>
+        </div>
+        <div class="desc-group">
+            <h4>Page count: &nbsp;</h4>
+            <p *ngIf="book?.volumeInfo?.pageCount">{{book?.volumeInfo?.pageCount}}</p>
+        <p *ngIf="!book?.volumeInfo?.pageCount">N/A</p>
+        </div>
+        <div class="desc-group">
+            <h4>Average rating:&nbsp;</h4>
+            <p *ngIf="book?.volumeInfo?.averageRating">{{book?.volumeInfo?.averageRating}}</p>
+            <p *ngIf="!book?.volumeInfo?.averageRating">N/A</p>
+        </div>
+        <div class="desc-group">
+            <h4>Download:&nbsp;</h4>
+            <p *ngIf="!book?.saleInfo?.buyLink">Currently not available</p>
+            <a href="{{book?.saleInfo?.buyLink}}" *ngIf="book?.saleInfo?.buyLink" class="buttonlike-link">Download</a>
+        </div>
+        <div class="desc-group">
+            <h4>Description: &nbsp;</h4>
+            <p *ngIf="!book?.volumeInfo?.description">N/A</p>
+            <p *ngIf="book?.volumeInfo?.description">{{book?.volumeInfo?.description | striptags}}</p>
+        </div>
+    </div>
+</section>

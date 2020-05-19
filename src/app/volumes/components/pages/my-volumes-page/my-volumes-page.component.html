@@ -1,0 +1,12 @@
+<section>
+    <div *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+    <h1 *ngIf="!isLoading && volumesData">My Volumes: </h1>
+    <a class="buttonlike-link" *ngIf="!isLoading" [routerLink]="['/volumeForm']" [queryParams]="{mode: 'create'}">Add new volume</a>
+    <div class="flex-container-row" *ngIf="volumesData != null">
+        <app-volume-card (deleteEvent)='deleteVolume($event)' *ngFor="let volume of volumesData" [volume]="volume"></app-volume-card>
+    </div>
+    <h1 *ngIf="!isLoading && volumesData === null">No volumes added! </h1>
+</section>
+

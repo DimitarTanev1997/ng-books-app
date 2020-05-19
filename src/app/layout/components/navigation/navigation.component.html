@@ -1,0 +1,23 @@
+<header (window:resize)="onResize($event)">
+    <div class="logo">
+        <span class="material-icons">local_library</span>
+        <span class="logo-text">BooksDB</span>
+    </div>
+    <nav [ngClass]="{
+        'show-nav': isHidden,
+        'hide-nav': !isHidden
+    }">
+        <ul>
+            <li><a [routerLink]="['home']" routerLinkActive='active-link' (click)="handleNav()">Home</a></li>
+            <li *ngIf="loggedUser" ><a [routerLink]="['myVolumes']" routerLinkActive='active-link' (click)="handleNav()">My Volumes</a></li>
+            <li *ngIf="!loggedUser" ><a [routerLink]="['signIn']" routerLinkActive='active-link' (click)="handleNav()">Sign in</a></li>
+            <li *ngIf="loggedUser" ><a (click)="onSignOut()">Sign out</a></li>
+        </ul>
+    </nav>
+    <div class="hidden-icon" (click)="handleNav()">
+        <span id="menuIcon" class="material-icons" *ngIf="menuIcon">menu</span>
+        <span id="closeIcon" class="material-icons" *ngIf="closeIcon">close</span>
+    </div>
+    <p *ngIf="loggedUser" class="user-email">({{loggedUser?.email}})</p>
+</header>
+

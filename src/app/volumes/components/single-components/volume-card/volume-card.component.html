@@ -1,0 +1,13 @@
+<div class="volume-card clickable" [ngClass] = "{
+    'not-clickable': currentPage === 'myVolumes'
+}" title="{{volume?.volumeInfo?.title}}" [routerLink]=" currentPage === 'results' ? ['/volumes', volume.id] : []">
+    <h4 class="hide-rows">{{volume?.volumeInfo?.title}}</h4>
+    <span id="editIcon" class="material-icons action-icon" title="Edit" *ngIf="currentPage === 'myVolumes'" (click)="onEdit()">edit</span>
+    <span id="removeIcon" class="material-icons action-icon" title="Remove from MyVolumes" *ngIf="currentPage === 'myVolumes'" (click)="onDelete()">delete_forever</span>
+    <span id="addIcon" class="material-icons action-icon" title="Add to MyVolumes" *ngIf="currentPage === 'results' && loggedUser" (click)="onAdd()">library_add</span>
+    <div>
+        <img onerror="this.src='../../../../../assets/images/generic-book-cover.jpg';" src="{{volume?.volumeInfo?.imageLinks?.thumbnail}}" alt="{{volume?.volumeInfo?.title}}">
+    </div>
+    <p class="hide-rows" title="{{volume?.volumeInfo?.authors?.join(', ')}}">{{volume?.volumeInfo?.authors?.join(', ')}}</p>
+    <p>{{volume?.volumeInfo?.publishedDate}}</p>
+</div>

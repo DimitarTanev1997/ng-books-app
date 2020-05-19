@@ -1,0 +1,18 @@
+.img-container {
+    max-width: 400px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-container h1 {
+    position: absolute;
+    z-index: 1;
+    font-size: 70px;
+}

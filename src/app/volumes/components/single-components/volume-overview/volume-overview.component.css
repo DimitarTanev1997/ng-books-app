@@ -1,0 +1,34 @@
+.info-container {
+    flex: 5;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.info-container > p {
+    margin-top: 5px;
+}
+
+.img-holder {
+    flex: 1;
+}
+
+.desc-group {
+    margin-top: 10px;
+}
+.desc-group p {
+    display: inline;
+}
+
+.desc-group h4 {
+    display: inline;
+    color: #A9B34C;
+}
+
+/* Responsivness */
+
+@media screen and (max-width: 480px) {
+    .flex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

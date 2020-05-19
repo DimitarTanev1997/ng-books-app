@@ -1,0 +1,39 @@
+.form-holder {
+    padding: 20px;
+    max-width: 300px;
+    width: 100%;
+}
+
+.form-holder h2 {
+    text-align: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.label-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    height: 45px;
+}
+
+.form-input {
+    height: 25px;
+    width: 100%;
+    display: block;
+    padding-left: 10px;
+}
+
+.error-text {
+    font-size: 13px;
+    color: #B3564C;
+    display: inline;
+}
+
+.error-container {
+    height: 20px;
+}

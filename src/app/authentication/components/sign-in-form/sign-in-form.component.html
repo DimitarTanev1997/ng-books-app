@@ -1,0 +1,30 @@
+<section>
+    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+    <div class="form-holder box-shadow" *ngIf="!isLoading">
+        <h2>Sign in</h2>
+        <form class="form-group" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+            <div class="error-container">
+                <p class="error-text" *ngIf="error">{{error}}</p>
+            </div>
+            <div class="label-container">
+                <div>
+                    <label for="email">Email: </label>
+                    <p class="error-text"*ngIf="email.touched && email.value === ''">required*</p>
+                    <p class="error-text"*ngIf="email.touched && email.invalid && email.value != ''">invalid*</p>
+                </div>
+                <input id="email" class="form-input" formControlName="email">
+            </div>
+            <div class="label-container">
+                <div>
+                    <label for="password">Password: </label>
+                    <p class="error-text"*ngIf="password.touched && password.invalid">required*</p>
+                </div>
+                <input id="password" class="form-input" type="password" formControlName="password">
+            </div>
+            <button class="button clickable" [ngClass]="{
+                'active': !signInForm.invalid,
+                'disabled': signInForm.invalid
+            }" [disabled]="signInForm.invalid">Sign In</button>
+        </form>
+    </div>
+</section>

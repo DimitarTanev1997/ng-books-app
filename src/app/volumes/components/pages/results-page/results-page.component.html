@@ -1,0 +1,10 @@
+<section>
+    <app-search-bar [error]="error"></app-search-bar>
+</section>
+<section>
+    <h3 *ngIf="volumesData?.length > 0">results for "{{resultString}}"</h3>
+    <h3 *ngIf="volumesData?.length === 0">no results found for "{{resultString}}"</h3>
+    <div class="flex-container-row" *ngIf="volumesData">
+        <app-volume-card *ngFor="let volume of volumesData" [volume]="volume"></app-volume-card>
+    </div>
+</section>

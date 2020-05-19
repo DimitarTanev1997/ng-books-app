@@ -1,0 +1,29 @@
+.volume-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 260px;
+    height: 350px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(231, 227, 227, 1);
+    margin: 10px;
+    position: relative;
+}
+
+.volume-card p {
+    font-size: 14px;
+}
+
+#removeIcon:hover {
+    color: #B3564C;
+}
+
+#addIcon, #editIcon:hover {
+    color: #A9B34C;
+}
+
+#editIcon {
+    left: 190px;
+}
